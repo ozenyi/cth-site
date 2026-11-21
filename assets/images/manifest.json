@@ -1,0 +1,337 @@
+{
+  "illustrations": {
+    "hero-accueil": {
+      "src": "images/illustrations/hero-accueil-1600.webp",
+      "srcset": "images/illustrations/hero-accueil-800.webp 800w, images/illustrations/hero-accueil-1600.webp 1600w",
+      "width": 1600,
+      "height": 1066,
+      "alt": "Illustration : rue européenne, toitures en tuiles et volets. Photo libre de droits, pas un chantier CTH."
+    },
+    "toiture": {
+      "src": "images/illustrations/toiture-1600.webp",
+      "srcset": "images/illustrations/toiture-800.webp 800w, images/illustrations/toiture-1600.webp 1600w",
+      "width": 1067,
+      "height": 1600,
+      "alt": "Illustration : toiture en tuiles et volets roulants. Photo libre de droits, pas un chantier CTH."
+    },
+    "facade": {
+      "src": "images/illustrations/facade-1600.webp",
+      "srcset": "images/illustrations/facade-800.webp 800w, images/illustrations/facade-1600.webp 1600w",
+      "width": 1600,
+      "height": 1066,
+      "alt": "Illustration : façade enduite claire et toiture en tuiles. Photo libre de droits, pas un chantier CTH."
+    },
+    "ravalement": {
+      "src": "images/illustrations/ravalement-1600.webp",
+      "srcset": "images/illustrations/ravalement-800.webp 800w, images/illustrations/ravalement-1600.webp 1600w",
+      "width": 1600,
+      "height": 1600,
+      "alt": "Illustration : volumes enduits clairs et chemin dallé. Photo libre de droits, pas un chantier CTH."
+    },
+    "isolation": {
+      "src": "images/illustrations/isolation-1600.webp",
+      "srcset": "images/illustrations/isolation-800.webp 800w, images/illustrations/isolation-1600.webp 1600w",
+      "width": 1033,
+      "height": 1600,
+      "alt": "Illustration : fenêtre de toit vue depuis des combles. Photo libre de droits, pas un chantier CTH."
+    },
+    "menuiserie": {
+      "src": "images/illustrations/menuiserie-1600.webp",
+      "srcset": "images/illustrations/menuiserie-800.webp 800w, images/illustrations/menuiserie-1600.webp 1600w",
+      "width": 1067,
+      "height": 1600,
+      "alt": "Illustration : façade, fenêtres et volets d'une maison à pans de bois. Photo libre de droits, pas un chantier CTH."
+    },
+    "portail": {
+      "src": "images/illustrations/portail-1600.webp",
+      "srcset": "images/illustrations/portail-800.webp 800w, images/illustrations/portail-1600.webp 1600w",
+      "width": 1600,
+      "height": 1068,
+      "alt": "Illustration : entrée de maison, piliers et cour dallée. Photo libre de droits, pas un chantier CTH."
+    },
+    "fenetres": {
+      "src": "images/illustrations/fenetres-1600.webp",
+      "srcset": "images/illustrations/fenetres-800.webp 800w, images/illustrations/fenetres-1600.webp 1600w",
+      "width": 1068,
+      "height": 1600,
+      "alt": "Illustration : pose d'un vitrage. Photo libre de droits, ce n'est pas une équipe CTH."
+    },
+    "volets": {
+      "src": "images/illustrations/volets-1600.webp",
+      "srcset": "images/illustrations/volets-800.webp 800w, images/illustrations/volets-1600.webp 1600w",
+      "width": 890,
+      "height": 1600,
+      "alt": "Illustration : fenêtre et volets sur une façade. Photo libre de droits, pas un chantier CTH."
+    },
+    "allees": {
+      "src": "images/illustrations/allees-1600.webp",
+      "srcset": "images/illustrations/allees-800.webp 800w, images/illustrations/allees-1600.webp 1600w",
+      "width": 1600,
+      "height": 1066,
+      "alt": "Illustration : chemin menant à une maison de village. Photo libre de droits, pas un chantier CTH."
+    },
+    "interieurs": {
+      "src": "images/illustrations/interieurs-1600.webp",
+      "srcset": "images/illustrations/interieurs-800.webp 800w, images/illustrations/interieurs-1600.webp 1600w",
+      "width": 1600,
+      "height": 1029,
+      "alt": "Illustration : pièce de vie lumineuse. Photo libre de droits, pas un chantier CTH."
+    },
+    "ventilation": {
+      "src": "images/illustrations/ventilation-1600.webp",
+      "srcset": "images/illustrations/ventilation-800.webp 800w, images/illustrations/ventilation-1600.webp 1600w",
+      "width": 1600,
+      "height": 1062,
+      "alt": "Illustration : pièce claire et ouverte. Photo libre de droits, pas une installation CTH."
+    },
+    "contact": {
+      "src": "images/illustrations/contact-1600.webp",
+      "srcset": "images/illustrations/contact-800.webp 800w, images/illustrations/contact-1600.webp 1600w",
+      "width": 1067,
+      "height": 1600,
+      "alt": "Illustration : maison en pierre dans un jardin. Photo libre de droits, pas un chantier CTH."
+    }
+  },
+  "chantiers": {
+    "accueil": {
+      "avant": {
+        "src": "images/chantiers/accueil/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier accueil, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/accueil/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier accueil, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/accueil/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier accueil, photo à venir."
+      }
+    },
+    "toiture": {
+      "avant": {
+        "src": "images/chantiers/toiture/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier toiture, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/toiture/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier toiture, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/toiture/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier toiture, photo à venir."
+      }
+    },
+    "facade": {
+      "avant": {
+        "src": "images/chantiers/facade/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier facade, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/facade/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier facade, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/facade/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier facade, photo à venir."
+      }
+    },
+    "ravalement": {
+      "avant": {
+        "src": "images/chantiers/ravalement/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier ravalement, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/ravalement/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier ravalement, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/ravalement/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier ravalement, photo à venir."
+      }
+    },
+    "isolation": {
+      "avant": {
+        "src": "images/chantiers/isolation/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier isolation, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/isolation/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier isolation, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/isolation/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier isolation, photo à venir."
+      }
+    },
+    "menuiserie": {
+      "avant": {
+        "src": "images/chantiers/menuiserie/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier menuiserie, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/menuiserie/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier menuiserie, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/menuiserie/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier menuiserie, photo à venir."
+      }
+    },
+    "portail": {
+      "avant": {
+        "src": "images/chantiers/portail/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier portail, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/portail/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier portail, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/portail/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier portail, photo à venir."
+      }
+    },
+    "fenetres": {
+      "avant": {
+        "src": "images/chantiers/fenetres/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier fenetres, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/fenetres/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier fenetres, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/fenetres/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier fenetres, photo à venir."
+      }
+    },
+    "volets": {
+      "avant": {
+        "src": "images/chantiers/volets/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier volets, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/volets/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier volets, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/volets/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier volets, photo à venir."
+      }
+    },
+    "allees": {
+      "avant": {
+        "src": "images/chantiers/allees/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier allees, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/allees/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier allees, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/allees/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier allees, photo à venir."
+      }
+    },
+    "interieurs": {
+      "avant": {
+        "src": "images/chantiers/interieurs/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier interieurs, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/interieurs/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier interieurs, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/interieurs/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier interieurs, photo à venir."
+      }
+    },
+    "ventilation": {
+      "avant": {
+        "src": "images/chantiers/ventilation/avant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement avant du chantier ventilation, photo à venir."
+      },
+      "pendant": {
+        "src": "images/chantiers/ventilation/pendant.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement pendant du chantier ventilation, photo à venir."
+      },
+      "apres": {
+        "src": "images/chantiers/ventilation/apres.webp",
+        "width": 1600,
+        "height": 1000,
+        "alt": "Emplacement après du chantier ventilation, photo à venir."
+      }
+    }
+  }
+}

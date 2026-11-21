@@ -1,0 +1,9 @@
+{
+  "name": "cth-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "test": "node src/build.mjs && node tests/check.mjs"
+  }
+}

@@ -1,0 +1,72 @@
+Illustrations du site CTH
+Licence Pexels : https://www.pexels.com/license/
+Utilisation gratuite, y compris commerciale. Attribution non obligatoire.
+Ces images sont des photos d'illustration. Ce ne sont pas des réalisations CTH.
+
+hero-accueil-1600.webp / hero-accueil-800.webp
+  Page : https://www.pexels.com/photo/17986547/
+  Auteur : Dušan Cvetanović
+  Licence : Pexels License
+
+toiture-1600.webp / toiture-800.webp
+  Page : https://www.pexels.com/photo/17314421/
+  Auteur : Benjamin Kupke
+  Licence : Pexels License
+
+facade-1600.webp / facade-800.webp
+  Page : https://www.pexels.com/photo/39634958/
+  Auteur : Tori D
+  Licence : Pexels License
+
+ravalement-1600.webp / ravalement-800.webp
+  Page : https://www.pexels.com/photo/1115804/
+  Auteur : auteur : voir la page Pexels
+  Licence : Pexels License
+
+isolation-1600.webp / isolation-800.webp
+  Page : https://www.pexels.com/photo/4482829/
+  Auteur : auteur : voir la page Pexels
+  Licence : Pexels License
+
+menuiserie-1600.webp / menuiserie-800.webp
+  Page : https://www.pexels.com/photo/27575957/
+  Auteur : AXP Photography
+  Licence : Pexels License
+
+portail-1600.webp / portail-800.webp
+  Page : https://www.pexels.com/photo/8134821/
+  Auteur : Max Vakhtbovych
+  Licence : Pexels License
+
+fenetres-1600.webp / fenetres-800.webp
+  Page : https://www.pexels.com/photo/5691516/
+  Auteur : auteur : voir la page Pexels
+  Licence : Pexels License
+
+volets-1600.webp / volets-800.webp
+  Page : https://www.pexels.com/photo/17745879/
+  Auteur : Sofía Nuñez
+  Licence : Pexels License
+
+allees-1600.webp / allees-800.webp
+  Page : https://www.pexels.com/photo/33453262/
+  Auteur : Bas Linders
+  Licence : Pexels License
+
+interieurs-1600.webp / interieurs-800.webp
+  Page : https://www.pexels.com/photo/1571460/
+  Auteur : auteur : voir la page Pexels
+  Licence : Pexels License
+
+ventilation-1600.webp / ventilation-800.webp
+  Page : https://www.pexels.com/photo/259962/
+  Auteur : auteur : voir la page Pexels
+  Licence : Pexels License
+
+contact-1600.webp / contact-800.webp
+  Page : https://www.pexels.com/photo/32289743/
+  Auteur : Ryan Klaus
+  Licence : Pexels License
+
+Les fichiers images/chantiers/ sont des cadres générés pour ce site (pas des photos tierces).
+Remplacez-les par les clichés du chantier, en gardant le même nom.
