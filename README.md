@@ -38,21 +38,22 @@ Deux familles, à ne pas mélanger.
 
 Pour en changer une, gardez le nom (`toiture-1600.webp` et `toiture-800.webp`) ou mettez à jour `assets/images/manifest.json` (chemin, largeur, hauteur, texte alternatif). Le texte alternatif doit continuer à dire que c'est une illustration.
 
-### Chantiers — avant, pendant, après
+### Chantiers
 
-`assets/images/chantiers/<ouvrage>/` contient trois fichiers :
+Cinq séries sont de vraies photos CTH, en WebP (largeur max 1600 px, variante 800 px), sans métadonnées :
 
-| Fichier | Rôle |
-|---|---|
-| `avant.webp` | État avant travaux |
-| `pendant.webp` | Chantier en cours |
-| `apres.webp` | Résultat |
+| Page | Fichiers | Légende |
+|---|---|---|
+| Accueil et Ravalement | `chantiers/ravalement/avant`, `pendant`, `apres` | Ravalement de façade — avant / après, chantier CTH |
+| Traitement de toiture | `chantiers/toiture/avant`, `pendant`, `apres` | Traitement de toiture — avant / après, chantier CTH |
+| Traitement de toiture, en plus | `realisation-toiture`, `realisation-facade` | Même maison : toiture, puis façade |
+| Façade | `chantiers/facade/avant`, `apres` | Façade — habillage d'étage, avant / après, chantier CTH |
+| Isolation des combles | `chantiers/isolation/avant`, `apres` | Isolation des combles — avant / après, chantier CTH |
+| Volets roulants | `chantiers/volets/avant`, `apres` | Volets roulants — avant / après, chantier CTH |
 
-Ouvrages : `accueil`, `toiture`, `facade`, `ravalement`, `isolation`, `menuiserie`, `portail`, `fenetres`, `volets`, `allees`, `interieurs`, `ventilation`.
+Les pages Allées, Intérieurs, Ventilation, Menuiserie (page d'ensemble), Portail et Fenêtres gardent des cadres d'attente. Leurs fichiers s'appellent `avant.webp`, `pendant.webp`, `apres.webp`.
 
-Remplacez le fichier par la photo réelle, au même nom, de préférence en WebP (environ 1600 px de large). Puis ajustez le `alt` dans `assets/images/manifest.json` : il dit aujourd'hui « photo à venir ». Le comparateur de la page (avant / après) et les trois cadres se mettent à jour tout seuls au prochain `node src/build.mjs`.
-
-Le slider compare `avant.webp` et `apres.webp`. `pendant.webp` est le cadre du milieu.
+`scripts/prepare_chantiers.py` régénère les WebP réels à partir de l'archive JPEG (hors dépôt). Il retire l'EXIF et masque visages, plaques et numéros de rue. Ne le relancez pas sans les originaux. `scripts/prepare_images.py` ne réécrit pas une série déjà marquée `real` dans le manifeste.
 
 ## Logo
 
@@ -97,7 +98,7 @@ Sans ce clic, les demandes des visiteurs ne sont pas délivrées. Ensuite, chaqu
 ## Ce qui reste à compléter
 
 - Trancher **7** ou **7 bis** rue Bernard Palissy.
-- Remplacer les cadres de chantiers par les photos réelles (avant / pendant / après).
+- Remplacer les cadres encore vides : allées, intérieurs, ventilation, portail, fenêtres, page Menuiserie.
 - Fournir le fichier source du logo.
 - Activer FormSubmit depuis `cth45000@gmail.com`.
 - Médiateur de la consommation : `[À COMPLÉTER]` dans les mentions.

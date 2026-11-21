@@ -93,104 +93,112 @@
     }
   },
   "chantiers": {
-    "accueil": {
-      "avant": {
-        "src": "images/chantiers/accueil/avant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier accueil, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/accueil/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier accueil, photo à venir."
-      },
-      "apres": {
-        "src": "images/chantiers/accueil/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier accueil, photo à venir."
-      }
-    },
     "toiture": {
+      "real": true,
+      "legend": "Traitement de toiture — avant / après, chantier CTH",
+      "aspect": "16 / 9",
       "avant": {
-        "src": "images/chantiers/toiture/avant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier toiture, photo à venir."
+        "src": "images/chantiers/toiture/avant-1600.webp",
+        "srcset": "images/chantiers/toiture/avant-800.webp 800w, images/chantiers/toiture/avant-1600.webp 1600w",
+        "width": 1598,
+        "height": 898,
+        "alt": "Traitement de toiture — avant, chantier CTH"
       },
       "pendant": {
-        "src": "images/chantiers/toiture/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier toiture, photo à venir."
+        "src": "images/chantiers/toiture/pendant-1600.webp",
+        "srcset": "images/chantiers/toiture/pendant-800.webp 800w, images/chantiers/toiture/pendant-1600.webp 1600w",
+        "width": 1598,
+        "height": 898,
+        "alt": "Traitement de toiture — pendant, chantier CTH"
       },
       "apres": {
-        "src": "images/chantiers/toiture/apres.webp",
+        "src": "images/chantiers/toiture/apres-1600.webp",
+        "srcset": "images/chantiers/toiture/apres-800.webp 800w, images/chantiers/toiture/apres-1600.webp 1600w",
         "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier toiture, photo à venir."
-      }
+        "height": 720,
+        "alt": "Traitement de toiture — après, chantier CTH"
+      },
+      "extra": [
+        {
+          "src": "images/chantiers/toiture/realisation-toiture-1600.webp",
+          "srcset": "images/chantiers/toiture/realisation-toiture-800.webp 800w, images/chantiers/toiture/realisation-toiture-1600.webp 1600w",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Toiture — chantier CTH",
+          "caption": "Toiture — chantier CTH"
+        },
+        {
+          "src": "images/chantiers/toiture/realisation-facade-1600.webp",
+          "srcset": "images/chantiers/toiture/realisation-facade-800.webp 800w, images/chantiers/toiture/realisation-facade-1600.webp 1600w",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Façade — chantier CTH",
+          "caption": "Façade — chantier CTH"
+        }
+      ]
     },
     "facade": {
+      "real": true,
+      "legend": "Façade — habillage d'étage, avant / après, chantier CTH",
+      "aspect": "4 / 3",
       "avant": {
-        "src": "images/chantiers/facade/avant.webp",
+        "src": "images/chantiers/facade/avant-1600.webp",
+        "srcset": "images/chantiers/facade/avant-800.webp 800w, images/chantiers/facade/avant-1600.webp 1600w",
         "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier facade, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/facade/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier facade, photo à venir."
+        "height": 1200,
+        "alt": "Façade — habillage d'étage, avant, chantier CTH"
       },
       "apres": {
-        "src": "images/chantiers/facade/apres.webp",
+        "src": "images/chantiers/facade/apres-1600.webp",
+        "srcset": "images/chantiers/facade/apres-800.webp 800w, images/chantiers/facade/apres-1600.webp 1600w",
         "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier facade, photo à venir."
+        "height": 1200,
+        "alt": "Façade — habillage d'étage, après, chantier CTH"
       }
     },
     "ravalement": {
+      "real": true,
+      "legend": "Ravalement de façade — avant / après, chantier CTH",
+      "aspect": "3 / 4",
       "avant": {
-        "src": "images/chantiers/ravalement/avant.webp",
+        "src": "images/chantiers/ravalement/avant-1600.webp",
+        "srcset": "images/chantiers/ravalement/avant-800.webp 800w, images/chantiers/ravalement/avant-1600.webp 1600w",
         "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier ravalement, photo à venir."
+        "height": 900,
+        "alt": "Ravalement de façade — avant, chantier CTH"
       },
       "pendant": {
-        "src": "images/chantiers/ravalement/pendant.webp",
+        "src": "images/chantiers/ravalement/pendant-1600.webp",
+        "srcset": "images/chantiers/ravalement/pendant-800.webp 800w, images/chantiers/ravalement/pendant-1600.webp 1600w",
         "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier ravalement, photo à venir."
+        "height": 1200,
+        "alt": "Ravalement de façade — pendant, chantier CTH"
       },
       "apres": {
-        "src": "images/chantiers/ravalement/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier ravalement, photo à venir."
+        "src": "images/chantiers/ravalement/apres-1600.webp",
+        "srcset": "images/chantiers/ravalement/apres-800.webp 800w, images/chantiers/ravalement/apres-1600.webp 1600w",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Ravalement de façade — après, chantier CTH"
       }
     },
     "isolation": {
+      "real": true,
+      "legend": "Isolation des combles — avant / après, chantier CTH",
+      "aspect": "3 / 4",
       "avant": {
-        "src": "images/chantiers/isolation/avant.webp",
+        "src": "images/chantiers/isolation/avant-1600.webp",
+        "srcset": "images/chantiers/isolation/avant-800.webp 800w, images/chantiers/isolation/avant-1600.webp 1600w",
         "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier isolation, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/isolation/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier isolation, photo à venir."
+        "height": 2132,
+        "alt": "Isolation des combles — avant, chantier CTH"
       },
       "apres": {
-        "src": "images/chantiers/isolation/apres.webp",
+        "src": "images/chantiers/isolation/apres-1600.webp",
+        "srcset": "images/chantiers/isolation/apres-800.webp 800w, images/chantiers/isolation/apres-1600.webp 1600w",
         "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier isolation, photo à venir."
+        "height": 2132,
+        "alt": "Isolation des combles — après, chantier CTH"
       }
     },
     "menuiserie": {
@@ -254,23 +262,22 @@
       }
     },
     "volets": {
+      "real": true,
+      "legend": "Volets roulants — avant / après, chantier CTH",
+      "aspect": "4 / 5",
       "avant": {
-        "src": "images/chantiers/volets/avant.webp",
+        "src": "images/chantiers/volets/avant-1600.webp",
+        "srcset": "images/chantiers/volets/avant-800.webp 800w, images/chantiers/volets/avant-1600.webp 1600w",
         "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier volets, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/volets/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier volets, photo à venir."
+        "height": 1200,
+        "alt": "Volets roulants — avant, chantier CTH"
       },
       "apres": {
-        "src": "images/chantiers/volets/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier volets, photo à venir."
+        "src": "images/chantiers/volets/apres-1600.webp",
+        "srcset": "images/chantiers/volets/apres-800.webp 800w, images/chantiers/volets/apres-1600.webp 1600w",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Volets roulants — après, chantier CTH"
       }
     },
     "allees": {

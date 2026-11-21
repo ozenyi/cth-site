@@ -68,5 +68,6 @@ contact-1600.webp / contact-800.webp
   Auteur : Ryan Klaus
   Licence : Pexels License
 
-Les fichiers images/chantiers/ sont des cadres générés pour ce site (pas des photos tierces).
-Remplacez-les par les clichés du chantier, en gardant le même nom.
+Les photos de chantiers marquées « real » dans manifest.json sont des clichés de CTH.
+Elles ne sont pas sous licence Pexels. Visages, plaques et numéros de rue lisibles ont été masqués.
+Les autres fichiers images/chantiers/ sont des cadres générés pour ce site (pas des photos tierces).

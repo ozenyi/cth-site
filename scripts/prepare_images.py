@@ -113,7 +113,6 @@ STAGES = ("avant", "pendant", "apres")
 STAGE_LABEL = {"avant": "AVANT", "pendant": "PENDANT", "apres": "APRÈS"}
 STAGE_COLOR = {"avant": (214, 206, 194), "pendant": (196, 188, 174), "apres": (214, 224, 208)}
 CHANTIER_SLUGS = [
-    "accueil",
     "toiture",
     "facade",
     "ravalement",
@@ -221,6 +220,7 @@ def og_image() -> None:
 
 
 def main() -> None:
+    previous = json.loads((ROOT / "assets/images/manifest.json").read_text(encoding="utf-8"))
     manifest = {"illustrations": {}, "chantiers": {}}
     lines = [
         "Illustrations du site CTH",
@@ -252,6 +252,11 @@ def main() -> None:
         print(f"illu {name} {w}x{h}")
 
     for slug in CHANTIER_SLUGS:
+        kept = previous.get("chantiers", {}).get(slug)
+        if kept and kept.get("real"):
+            manifest["chantiers"][slug] = kept
+            print("conserve", slug)
+            continue
         manifest["chantiers"][slug] = {}
         for stage in STAGES:
             rel = f"images/chantiers/{slug}/{stage}.webp"
@@ -266,8 +271,9 @@ def main() -> None:
 
     og_image()
     (ROOT / "assets/images/manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-    lines.append("Les fichiers images/chantiers/ sont des cadres générés pour ce site (pas des photos tierces).")
-    lines.append("Remplacez-les par les clichés du chantier, en gardant le même nom.")
+    lines.append("Les photos de chantiers marquées « real » dans manifest.json sont des clichés de CTH.")
+    lines.append("Elles ne sont pas sous licence Pexels. Visages, plaques et numéros de rue lisibles ont été masqués.")
+    lines.append("Les autres fichiers images/chantiers/ sont des cadres générés pour ce site (pas des photos tierces).")
     (ROOT / "assets/images/LICENSES.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("done")
 
