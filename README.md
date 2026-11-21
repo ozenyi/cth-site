@@ -64,18 +64,18 @@ Une seule phase s'affiche en photo, pas en comparateur. L'accueil groupe les cin
 
 Le logo du site est un mot-symbole provisoire : chevron terracotta, **CTH** en anthracite, sous-titre terracotta. Quand le fichier source arrive, remplacez le SVG dans `src/render.mjs` (fonction `logo`) et `assets/favicon.svg`.
 
-## Adresse (7 ou 7 bis)
+## Adresse
 
 Une seule ligne décide de tout le site :
 
 ```js
 address: {
-  line: "7 rue Bernard Palissy",
+  line: "7 bis rue Bernard Palissy",
   ...
 }
 ```
 
-dans `site.config.mjs`. L'INSEE, Qualibat et Pages Jaunes écrivent « 7 ». Plusieurs actes RCS écrivent « 7 bis ». Pour passer à l'autre formulation, changez `line`, puis reconstruisez. Les coordonnées du plan sont le point INSEE du n° 7 : à revoir seulement si le bâtiment change.
+dans `site.config.mjs`. L'adresse retenue est « 7 bis rue Bernard Palissy, 45800 Saint-Jean-de-Braye ». Les coordonnées du plan restent le point INSEE du n° 7.
 
 ## Badge RGE
 
@@ -102,7 +102,6 @@ Sans ce clic, les demandes des visiteurs ne sont pas délivrées. Ensuite, chaqu
 
 ## Ce qui reste à compléter
 
-- Trancher **7** ou **7 bis** rue Bernard Palissy.
 - Remplacer les cadres encore vides : allées, intérieurs, ventilation, portail, fenêtres, page Menuiserie.
 - Fournir le fichier source du logo.
 - Activer FormSubmit depuis `cth45000@gmail.com`.

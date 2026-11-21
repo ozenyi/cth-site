@@ -3,8 +3,8 @@
  * L'adresse, l'URL canonique, le RGE et l'assurance se changent ici.
  * Puis : node src/build.mjs
  *
- * Adresse : les sources publiques hésitent entre « 7 » et « 7 bis »
- * rue Bernard Palissy. La ligne `address.line` est la seule valeur publiée.
+ * Adresse publiée : 7 bis rue Bernard Palissy.
+ * La ligne `address.line` est la seule valeur publiée.
  */
 
 export const site = {
@@ -31,7 +31,7 @@ export const site = {
   phoneTel: "+33238646007",
   email: "cth45000@gmail.com",
   address: {
-    line: "7 rue Bernard Palissy",
+    line: "7 bis rue Bernard Palissy",
     postalCode: "45800",
     city: "Saint-Jean-de-Braye",
     // Point INSEE du n° 7. À revoir si le bâtiment change.
