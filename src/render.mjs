@@ -17,8 +17,8 @@ export function esc(value) {
 }
 
 const logoSvg = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
-  <path d="M3 5.5 16 16 3 26.5" fill="none" stroke="#6AAA38" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M12 5.5 25 16 12 26.5" fill="none" stroke="#6AAA38" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round" opacity="0.55"/>
+  <path d="M3 5.5 16 16 3 26.5" fill="none" stroke="#B5532F" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M12 5.5 25 16 12 26.5" fill="none" stroke="#B5532F" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round" opacity="0.55"/>
 </svg>`;
 
 function logo() {
@@ -141,15 +141,17 @@ function footer() {
           <li><a href="contact.html">Contactez-nous</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
           <li><a href="politique-de-confidentialite.html">Politique de confidentialité</a></li>
+          <li><a href="sitemap.xml">Plan du site</a></li>
           <li><a href="tel:${site.phoneTel}">${esc(site.phoneDisplay)}</a></li>
           <li><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></li>
         </ul>
+        <p>Zone d'intervention : Orléans, Saint-Jean-de-Braye et les communes voisines du Loiret.</p>
         <p>${esc(fullAddress())}<br>${esc(site.hours.label)}<br>${esc(site.hours.closed)}</p>
       </div>
     </div>
     <div class="wrap fine">
       <p>${esc(site.legalName)}, ${esc(site.forme)} au capital de ${esc(site.capital)} · SIRET ${esc(site.siret)} · ${esc(site.rcs)}</p>
-      <p>Siège à ${esc(site.address.city)}, Loiret, depuis ${esc(site.since)}. Photos d'illustration sous licence Pexels : <a href="images/LICENSES.txt">crédits</a>. Les comparateurs de toiture, façade, ravalement, combles et volets roulants montrent des chantiers CTH.</p>
+      <p>Siège à ${esc(site.address.city)}, Loiret, depuis ${esc(site.since)}. Photos d'illustration sous licence Pexels : <a href="images/LICENSES.txt">crédits</a>. Les photos de chantiers sont celles de CTH. <a href="sitemap.xml">Plan du site</a>.</p>
     </div>
   </footer>
   <div class="callbar">
@@ -173,53 +175,83 @@ function shot(manifest, slug, stage) {
   return `<img src="${img.src}"${srcset} width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" loading="lazy" decoding="async"${focus}>`;
 }
 
-export function comparaison(manifest, slug) {
+function stageList(manifest, slug, labels) {
   const pack = manifest.chantiers[slug];
+  return labels
+    .filter(([key]) => pack[key])
+    .map(([key, label]) => `<li><figure>
+        ${shot(manifest, slug, key)}
+        <figcaption><strong>${label}</strong><span>${esc(pack[key].alt)}</span></figcaption>
+      </figure></li>`)
+    .join("");
+}
+
+export function comparaison(manifest, slug, options = {}) {
+  const pack = manifest.chantiers[slug];
+  const showStages = options.stages !== false;
+  const showExtras = options.extras !== false;
   const labels = [
     ["avant", "Avant"],
     ["pendant", "Pendant"],
     ["apres", "Après"],
   ];
-  const stages = labels
-    .filter(([key]) => pack[key])
-    .map(([key, label]) => {
-      const file = pack.real ? "" : `<small>chantiers/${esc(slug)}/${key}.webp</small>`;
-      return `<li><figure>
-        ${shot(manifest, slug, key)}
-        <figcaption><strong>${label}</strong>${file}</figcaption>
-      </figure></li>`;
-    })
-    .join("");
   const aspect = pack.aspect ? ` style="--ba: ${pack.aspect}"` : "";
-  const note = pack.real
-    ? ""
-    : `<p class="form-note">Photos classées par chantier et par étape. Remplacez les fichiers en gardant le même nom : avant, pendant, après.</p>`;
-  const extras = (pack.extra || [])
-    .map(
-      (img) => `<figure>
+  const extras = showExtras
+    ? (pack.extra || [])
+        .map(
+          (img) => `<figure>
         <img src="${img.src}" srcset="${img.srcset}" sizes="(min-width: 800px) 36rem, 100vw" width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" loading="lazy" decoding="async">
         <figcaption>${esc(img.caption)}</figcaption>
       </figure>`
-    )
-    .join("");
+        )
+        .join("")
+    : "";
   const extraBlock = extras
     ? `<h3 class="realisations-title">Même maison, deux prestations.</h3>
     <div class="realisations">${extras}</div>
     <p class="form-note">Toiture refaite, puis façade terminée. Chantier CTH.</p>`
     : "";
-  return `<div class="chantier"${aspect}>
+  const frames = showStages ? `<ul class="stages">${stageList(manifest, slug, labels)}</ul>` : "";
+
+  if (pack.avant && pack.apres) {
+    return `<div class="chantier"${aspect}>
     <div class="ba" data-ba>
       ${shot(manifest, slug, "apres")}
       <div class="ba-clip">${shot(manifest, slug, "avant")}</div>
       <span class="ba-handle" aria-hidden="true"></span>
       <p class="ba-label ba-label-avant">Avant</p>
       <p class="ba-label ba-label-apres">Après</p>
-      <input type="range" min="0" max="100" value="56" aria-label="Comparer l'avant et l'après du chantier">
+      <input type="range" min="0" max="100" value="56" aria-label="Comparer l'avant et l'après : ${esc(pack.legend)}">
     </div>
-    <ul class="stages">${stages}</ul>
-    ${note}
+    ${frames}
     ${extraBlock}
   </div>`;
+  }
+
+  return `<div class="chantier photo-set"${aspect}>
+    <ul class="stages">${stageList(manifest, slug, labels)}</ul>
+  </div>`;
+}
+
+function linkedPhotos(manifest, pack) {
+  return `<ul class="photo-links">${pack.links
+    .map((item) => {
+      const img = manifest.chantiers[item.slug][item.stage];
+      return `<li><a href="${item.href}">
+        <figure>
+          ${shot(manifest, item.slug, item.stage)}
+          <figcaption><strong>${esc(item.label)}</strong><span>${esc(img.alt)}</span></figcaption>
+        </figure>
+      </a></li>`;
+    })
+    .join("")}</ul>`;
+}
+
+function chantierHeading(pack) {
+  if (pack.links) return "Portail, fenêtres, volets.";
+  if (pack.avant && pack.apres) return pack.pendant ? "Avant, pendant, après." : "Avant, après.";
+  if (pack.pendant && pack.apres) return "Pendant, après.";
+  return "Chantier.";
 }
 
 function businessNode() {
@@ -312,7 +344,7 @@ export function layout({
   <meta name="description" content="${esc(description)}">
   <link rel="canonical" href="${canonical}">
   <meta name="robots" content="${robots}">
-  <meta name="theme-color" content="#161616">
+  <meta name="theme-color" content="#2B2B2B">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${esc(site.brand)}">
@@ -344,43 +376,67 @@ export function layout({
 
 export function renderHome(manifest) {
   const cards = [
-    ["traitement-toiture.html", "toiture", "01", "Traitement de toiture", "Démoussage, protection, gouttières, charpente."],
-    ["facade.html", "facade", "02", "Façade", "Nettoyage, traitement, hydrofuge."],
-    ["ravalement.html", "ravalement", "03", "Ravalement", "Reprise d'enduit et finition."],
-    ["isolation-combles.html", "isolation", "04", "Isolation des combles", "Combles perdus et murs par l'extérieur."],
-    ["menuiserie.html", "menuiserie", "05", "Menuiserie", "Portail, fenêtres, volets roulants."],
-    ["allees.html", "allees", "06", "Allées", "Cours, dallages, cheminements."],
-    ["interieurs.html", "interieurs", "07", "Intérieurs", "Peinture, sols, remises en état."],
-    ["ventilation.html", "ventilation", "08", "Ventilation", "Air neuf, bouches, VMC."],
+    ["traitement-toiture.html", "couverture", "Traitement de toiture", "Démoussage, protection, gouttières."],
+    ["facade.html", "facade", "Façade", "Nettoyage, traitement, hydrofuge."],
+    ["ravalement.html", "ravalement", "Ravalement", "Reprise d'enduit et finition."],
+    ["isolation-combles.html", "isolation-combles", "Isolation des combles", "Combles perdus et murs par l'extérieur."],
+    ["menuiserie.html", "menuiserie-volets-roulants", "Menuiserie", "Portail, fenêtres, volets roulants."],
+    ["allees.html", "allees", "Allées", "Cours, dallages, cheminements."],
+    ["interieurs.html", "interieurs", "Intérieurs", "Peinture, sols, remises en état."],
+    ["ventilation.html", "ventilations", "Ventilation", "Air neuf, bouches, VMC."],
   ]
-    .map(([href, image, num, title, text]) => {
-      const img = manifest.illustrations[image];
+    .map(([href, slug, title, text]) => {
+      const img = manifest.chantiers[slug].apres;
       return `<li><a class="service-card" href="${href}">
         <div class="media"><img src="${img.src}" srcset="${img.srcset}" sizes="(min-width: 1080px) 30vw, (min-width: 720px) 45vw, 100vw" width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" loading="lazy" decoding="async"></div>
-        <div><span class="num">${num}</span><h3>${esc(title)}</h3><p>${esc(text)}</p></div>
+        <div><h3>${esc(title)}</h3><p>${esc(text)}</p></div>
       </a></li>`;
     })
     .join("");
 
+  const tabs = [
+    ["ravalement", "Ravalement"],
+    ["couverture", "Toiture"],
+    ["facade", "Façade"],
+    ["isolation-combles", "Combles"],
+    ["menuiserie-volets-roulants", "Volets roulants"],
+  ];
+  const tabButtons = tabs
+    .map(
+      ([slug, label], index) =>
+        `<button type="button" role="tab" id="tab-${slug}" aria-controls="panel-${slug}" aria-selected="${index === 0 ? "true" : "false"}" tabindex="${index === 0 ? "0" : "-1"}">${label}</button>`
+    )
+    .join("");
+  const tabPanels = tabs
+    .map(([slug]) => {
+      const pack = manifest.chantiers[slug];
+      return `<div role="tabpanel" id="panel-${slug}" aria-labelledby="tab-${slug}">
+        <p class="chantier-legend">${esc(pack.legend)}.</p>
+        ${comparaison(manifest, slug, { stages: false, extras: false })}
+      </div>`;
+    })
+    .join("");
+
   const zones = site.area.map((name) => `<li>${esc(name)}</li>`).join("");
-  const hero = manifest.illustrations["hero-accueil"];
+  const hero = manifest.chantiers.couverture.apres;
   const body = `
-    <section class="hero">
-      ${illu(manifest, "hero-accueil", true)}
-      <p class="photo-note">Photo d'illustration</p>
+    <section class="hero hero-home">
+      <img src="${hero.src}" srcset="${hero.srcset}" sizes="100vw" width="${hero.width}" height="${hero.height}" alt="${esc(hero.alt)}" loading="eager" fetchpriority="high" decoding="async" style="object-position: 68% center">
+      <p class="photo-note">Chantier CTH</p>
       <div class="hero-copy">
         <p class="kicker">Saint-Jean-de-Braye · Loiret · depuis ${esc(site.since)}</p>
-        <h1>${esc(site.slogan)}</h1>
-        <p class="lead">CTH rénove les maisons d'Orléans et du Loiret. Toiture, façade, ravalement, isolation, menuiserie, allées, intérieurs, ventilation : un interlocuteur sur place, un devis écrit, des travaux expliqués avant de commencer.</p>
+        <h1>Centre Technique de l'Habitat (CTH)</h1>
+        <p class="slogan">${esc(site.slogan)}</p>
+        <p class="lead">Toiture, façade, ravalement, isolation, menuiserie, allées, intérieurs et ventilation. Un devis écrit, après la visite.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="contact.html">Devis gratuit</a>
+          <a class="btn btn-primary" href="contact.html">Demander un devis gratuit</a>
           <a class="btn btn-line" href="tel:${site.phoneTel}">${esc(site.phoneDisplay)}</a>
         </div>
         ${rgeBadge()}
       </div>
     </section>
     <section class="trust" aria-label="Repères">
-      <article><strong>Siège à Saint-Jean-de-Braye</strong><span>${esc(fullAddress())}</span></article>
+      <article><strong>Siège à Saint-Jean-de-Braye</strong><span>${esc(site.address.line)}<br>${esc(site.address.postalCode)} ${esc(site.address.city)}</span></article>
       <article><strong>Entreprise du Loiret depuis ${esc(site.since)}</strong><span>Immatriculée le ${esc(site.immatriculation)}</span></article>
       <article><strong>Devis gratuit</strong><span>Écrit, après une visite. Sans engagement.</span></article>
       <article><strong>${esc(site.hours.label)}</strong><span>${esc(site.hours.closed)}</span></article>
@@ -410,41 +466,38 @@ export function renderHome(manifest) {
         </ol>
       </div>
     </section>
-    <section class="section" style="background:var(--cream)">
+    <section class="section chantiers-home">
       <div class="wrap">
-        <div class="section-head reveal">
+        <div class="section-head">
           <p class="kicker">Chantiers</p>
-          <h2>Avant, pendant, après.</h2>
-          <p>Ravalement de façade — avant / après, chantier CTH.</p>
+          <h2>Avant, après.</h2>
+          <p>Cinq chantiers CTH. Le curseur compare l'avant et l'après. Aucun lieu, aucune date, aucun client n'est nommé.</p>
         </div>
-        <div class="reveal">${comparaison(manifest, "ravalement")}</div>
+        <div class="chantier-tabs" data-chantier-tabs>
+          <div role="tablist" aria-label="Chantiers avant et après">${tabButtons}</div>
+          ${tabPanels}
+        </div>
       </div>
     </section>
     <section class="section">
       <div class="wrap">
         <div class="section-head">
           <p class="kicker">Secteur</p>
-          <h2>Orléans et le Loiret.</h2>
-          <p>À partir de Saint-Jean-de-Braye. Au-delà de ces communes, le déplacement se confirme par téléphone.</p>
+          <h2>Orléans et Saint-Jean-de-Braye.</h2>
+          <p>À partir du siège. Au-delà de ces communes, le déplacement se confirme par téléphone.</p>
         </div>
         <ul class="zones">${zones}</ul>
+        <p class="form-note">Aucun avis n'est publié ici. Une référence se donne avec l'accord du client.</p>
       </div>
     </section>
-    <section class="section avis">
-      <div class="wrap">
-        <p class="kicker">Avis</p>
-        <h2>Les témoignages viendront avec l'accord de ceux qui les signent.</h2>
-        <p>Aucun avis n'est publié pour le moment. Pas de note, pas de prénom emprunté. Si vous voulez des chantiers de référence près de chez vous, demandez-les : nous les citons lorsque le client est d'accord.</p>
-        <a class="btn btn-primary" href="contact.html?projet=autre">Demander des références</a>
-      </div>
-    </section>
-    <section class="section cta-band">
+    <section class="cta-final">
       <div class="wrap">
         <p class="kicker">Devis</p>
-        <h2>Dites-nous la maison, on vient la voir.</h2>
+        <h2>Demander un devis gratuit</h2>
+        <p>Visite sur place, devis écrit, sans engagement. ${esc(site.hours.label)}.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="contact.html">Formulaire court</a>
-          <a class="btn btn-line-dark" href="tel:${site.phoneTel}">${esc(site.phoneDisplay)}</a>
+          <a class="btn btn-primary" href="contact.html">Demander un devis gratuit</a>
+          <a class="btn btn-line" href="tel:${site.phoneTel}">${esc(site.phoneDisplay)}</a>
         </div>
       </div>
     </section>`;
@@ -536,14 +589,14 @@ export function renderService(service, manifest) {
       <div class="wrap">
         <div class="section-head">
           <p class="kicker">Chantier</p>
-          <h2>${manifest.chantiers[service.chantier].pendant ? "Avant, pendant, après." : "Avant, après."}</h2>
-          <p>${
-            manifest.chantiers[service.chantier].real
-              ? esc(manifest.chantiers[service.chantier].legend) + "."
-              : "Le comparateur attend les photos de ce type d'ouvrage. Illustration et cadres ne sont pas des chantiers CTH."
-          }</p>
+          <h2>${chantierHeading(manifest.chantiers[service.chantier])}</h2>
+          <p>${esc(manifest.chantiers[service.chantier].legend)}.</p>
         </div>
-        ${comparaison(manifest, service.chantier)}
+        ${
+          manifest.chantiers[service.chantier].links
+            ? linkedPhotos(manifest, manifest.chantiers[service.chantier])
+            : comparaison(manifest, service.chantier)
+        }
       </div>
     </section>
     <section class="section" style="padding-top:0">
@@ -700,8 +753,8 @@ export function renderMentions() {
       <h2>Médiateur de la consommation</h2>
       <p>[À COMPLÉTER]</p>
       <h2>Propriété intellectuelle</h2>
-      <p>Les textes de ce site sont ceux de ${esc(site.legalName)}. Les photos pleine largeur d'ambiance sont des illustrations libres de droits (licence Pexels) ; les auteurs sont listés dans le fichier <a href="images/LICENSES.txt">images/LICENSES.txt</a>. Ce ne sont pas des chantiers de CTH. Les comparateurs avant / après des pages toiture, façade, ravalement, isolation des combles et volets roulants sont des chantiers de l'entreprise. Les autres cadres restent des emplacements, en attendant les photographies de ces ouvrages.</p>
-      <p>Le logo texte (chevron vert, lettres CTH) est une version provisoire, dans l'esprit du logo existant. Le fichier source du logo suivra.</p>
+      <p>Les textes de ce site sont ceux de ${esc(site.legalName)}. Les photos pleine largeur d'ambiance des pages de savoir-faire sont des illustrations libres de droits (licence Pexels) ; les auteurs sont listés dans le fichier <a href="images/LICENSES.txt">images/LICENSES.txt</a>. Ce ne sont pas des chantiers de CTH. Les comparateurs avant / après des pages toiture, façade, ravalement, isolation des combles et volets roulants, ainsi que les photos de portail, de fenêtres, d'allées, d'intérieurs et de ventilation, sont des chantiers de l'entreprise.</p>
+      <p>Le logo texte (chevron terracotta, lettres CTH) est une version provisoire, dans l'esprit du logo existant. Le fichier source du logo suivra.</p>
     </article>`;
   return layout({
     file: "mentions-legales.html",

@@ -40,24 +40,29 @@ Pour en changer une, gardez le nom (`toiture-1600.webp` et `toiture-800.webp`) o
 
 ### Chantiers
 
-Cinq séries sont de vraies photos CTH, en WebP (largeur max 1600 px, variante 800 px), sans métadonnées :
+Les photos de chantiers sont des WebP (largeur max 1600 px, variante 800 px), sans métadonnées. Le fichier plein s'appelle `avant.webp`, `pendant.webp` ou `apres.webp`.
 
-| Page | Fichiers | Légende |
+| Page | Dossier | Phases |
 |---|---|---|
-| Accueil et Ravalement | `chantiers/ravalement/avant`, `pendant`, `apres` | Ravalement de façade — avant / après, chantier CTH |
-| Traitement de toiture | `chantiers/toiture/avant`, `pendant`, `apres` | Traitement de toiture — avant / après, chantier CTH |
-| Traitement de toiture, en plus | `realisation-toiture`, `realisation-facade` | Même maison : toiture, puis façade |
-| Façade | `chantiers/facade/avant`, `apres` | Façade — habillage d'étage, avant / après, chantier CTH |
-| Isolation des combles | `chantiers/isolation/avant`, `apres` | Isolation des combles — avant / après, chantier CTH |
-| Volets roulants | `chantiers/volets/avant`, `apres` | Volets roulants — avant / après, chantier CTH |
+| Accueil et Ravalement | `chantiers/ravalement` | avant, pendant, après |
+| Traitement de toiture | `chantiers/couverture` | avant, pendant, après |
+| Traitement de toiture, en plus | `chantiers/toiture/realisation-toiture`, `realisation-facade` | même maison, deux prestations |
+| Façade | `chantiers/facade` | avant, après |
+| Isolation des combles | `chantiers/isolation-combles` | avant, après |
+| Volets roulants | `chantiers/menuiserie-volets-roulants` | avant, après |
+| Portail | `chantiers/menuiserie-portail` | après seulement |
+| Fenêtres | `chantiers/menuiserie-fenetres` | après seulement |
+| Allées | `chantiers/allees` | après seulement, recadrée |
+| Intérieurs | `chantiers/interieurs` | après seulement |
+| Ventilation | `chantiers/ventilations` | pendant, après — pas un avant / après |
 
-Les pages Allées, Intérieurs, Ventilation, Menuiserie (page d'ensemble), Portail et Fenêtres gardent des cadres d'attente. Leurs fichiers s'appellent `avant.webp`, `pendant.webp`, `apres.webp`.
+Une seule phase s'affiche en photo, pas en comparateur. L'accueil groupe les cinq comparateurs dans des onglets.
 
 `scripts/prepare_chantiers.py` régénère les WebP réels à partir de l'archive JPEG (hors dépôt). Il retire l'EXIF et masque visages, plaques et numéros de rue. Ne le relancez pas sans les originaux. `scripts/prepare_images.py` ne réécrit pas une série déjà marquée `real` dans le manifeste.
 
 ## Logo
 
-Le logo du site est un mot-symbole provisoire : chevron vert, **CTH** en noir, sous-titre vert. Il reprend les couleurs du logo recadré fourni. Quand le fichier source arrive, remplacez le SVG dans `src/render.mjs` (fonction `logo`) et `assets/favicon.svg`.
+Le logo du site est un mot-symbole provisoire : chevron terracotta, **CTH** en anthracite, sous-titre terracotta. Quand le fichier source arrive, remplacez le SVG dans `src/render.mjs` (fonction `logo`) et `assets/favicon.svg`.
 
 ## Adresse (7 ou 7 bis)
 

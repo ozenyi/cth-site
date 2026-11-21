@@ -113,17 +113,17 @@ STAGES = ("avant", "pendant", "apres")
 STAGE_LABEL = {"avant": "AVANT", "pendant": "PENDANT", "apres": "APRÈS"}
 STAGE_COLOR = {"avant": (214, 206, 194), "pendant": (196, 188, 174), "apres": (214, 224, 208)}
 CHANTIER_SLUGS = [
-    "toiture",
+    "couverture",
     "facade",
     "ravalement",
-    "isolation",
+    "isolation-combles",
     "menuiserie",
-    "portail",
-    "fenetres",
-    "volets",
+    "menuiserie-portail",
+    "menuiserie-fenetres",
+    "menuiserie-volets-roulants",
     "allees",
     "interieurs",
-    "ventilation",
+    "ventilations",
 ]
 
 
@@ -273,7 +273,7 @@ def main() -> None:
     (ROOT / "assets/images/manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     lines.append("Les photos de chantiers marquées « real » dans manifest.json sont des clichés de CTH.")
     lines.append("Elles ne sont pas sous licence Pexels. Visages, plaques et numéros de rue lisibles ont été masqués.")
-    lines.append("Les autres fichiers images/chantiers/ sont des cadres générés pour ce site (pas des photos tierces).")
+    lines.append("L'allée a été recadrée pour sortir un flou marron posé sur le grillage.")
     (ROOT / "assets/images/LICENSES.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("done")
 
