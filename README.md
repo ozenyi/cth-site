@@ -4,6 +4,16 @@ Site vitrine statique de **CTH**, entreprise de Saint-Jean-de-Braye (Loiret). Il
 
 Les textes, l'adresse, le téléphone, le RGE et l'assurance viennent de `site.config.mjs`. On ne les répète pas dans les pages.
 
+## Première mise en ligne
+
+Le workflow `.github/workflows/pages.yml` construit `dist/` et le publie. GitHub n'accepte ce déploiement qu'après un réglage unique, que le jeton du workflow ne peut pas faire seul :
+
+1. Dépôt GitHub → **Settings** → **Pages**.
+2. **Build and deployment** → **Source** : **GitHub Actions**.
+3. Relancer le workflow **Pages** sur la branche `main`.
+
+L'adresse est alors <https://ozenyi.github.io/cth-site/>.
+
 ## Générer le site
 
 ```bash
