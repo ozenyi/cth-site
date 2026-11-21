@@ -106,7 +106,7 @@ Sans ce clic, les demandes des visiteurs ne sont pas délivrées. Ensuite, chaqu
 - Remplacer les cadres encore vides : allées, intérieurs, ventilation, portail, fenêtres, page Menuiserie.
 - Fournir le fichier source du logo.
 - Activer FormSubmit depuis `cth45000@gmail.com`.
-- Médiateur de la consommation : `[À COMPLÉTER]` dans les mentions.
+- Adhérer au CM2C (https://www.cm2c.net/inscription-professionnel.php) : la mention n'est valable qu'une fois la convention signée.
 - Durée précise de conservation des demandes sans suite, et garanties du transfert FormSubmit : `[À COMPLÉTER]` dans la politique de confidentialité.
 - Renouveler le RGE avant le 12 décembre 2026 si le badge doit rester.
 - Ne pas publier d'avis tant qu'un accord n'est pas donné. Ne pas présenter CTH comme membre du Réseau CTH national.

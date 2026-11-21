@@ -56,6 +56,12 @@ export const site = {
     address: "88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis",
     service: "GitHub Pages",
   },
+  mediator: {
+    name: "Centre de Médiation de la Consommation des Conciliateurs de justice (CM2C)",
+    address: "49 rue de Ponthieu, 75008 Paris",
+    url: "https://www.cm2c.net/",
+    claimUrl: "https://www.cm2c.net/declarer-un-litige.php",
+  },
   area: [
     "Saint-Jean-de-Braye",
     "Orléans",
