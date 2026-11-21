@@ -150,11 +150,18 @@ for (const needle of [
   site.capital,
   "GitHub Inc.",
   site.insuranceLabel,
-  "[À COMPLÉTER]",
+  site.mediator.name,
+  site.mediator.address,
+  site.mediator.url,
+  site.mediator.claimUrl,
+  'rel="noopener noreferrer"',
+  "L. 612-1",
   fullAddress(),
 ]) {
   if (!mentions.includes(needle)) fail(`mentions sans ${needle}`);
 }
+if (mentions.includes("[À COMPLÉTER]")) fail("mentions contient encore [À COMPLÉTER]");
+if (/ODR|ec\.europa\.eu\/consumers\/odr/i.test(mentions)) fail("mentions cite la plateforme européenne ODR");
 
 const privacy = read("politique-de-confidentialite.html");
 for (const needle of ["Formulaire de devis", "Durée de conservation", "Vos droits", "CNIL", "cookie", "[À COMPLÉTER]"]) {
