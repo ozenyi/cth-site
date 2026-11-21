@@ -57,6 +57,39 @@
     });
   }
 
+  document.querySelectorAll("[data-chantier-tabs]").forEach(function (root) {
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[role="tabpanel"]'));
+    if (!tabs.length) return;
+
+    function select(index) {
+      tabs.forEach(function (tab, i) {
+        var on = i === index;
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+        tab.tabIndex = on ? 0 : -1;
+        panels[i].hidden = !on;
+      });
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () {
+        select(i);
+      });
+      tab.addEventListener("keydown", function (event) {
+        var next = null;
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (i + 1) % tabs.length;
+        if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = (i + tabs.length - 1) % tabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = tabs.length - 1;
+        if (next === null) return;
+        event.preventDefault();
+        select(next);
+        tabs[next].focus();
+      });
+    });
+    select(0);
+  });
+
   document.querySelectorAll("[data-ba]").forEach(function (ba) {
     var input = ba.querySelector('input[type="range"]');
     var clip = ba.querySelector(".ba-clip");

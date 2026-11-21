@@ -93,30 +93,36 @@
     }
   },
   "chantiers": {
-    "toiture": {
+    "couverture": {
       "real": true,
+      "chantier": "CH-01",
       "legend": "Traitement de toiture — avant / après, chantier CTH",
+      "phases": [
+        "avant",
+        "pendant",
+        "apres"
+      ],
       "aspect": "16 / 9",
       "avant": {
-        "src": "images/chantiers/toiture/avant-1600.webp",
-        "srcset": "images/chantiers/toiture/avant-800.webp 800w, images/chantiers/toiture/avant-1600.webp 1600w",
-        "width": 1598,
-        "height": 898,
-        "alt": "Traitement de toiture — avant, chantier CTH"
+        "src": "images/chantiers/couverture/avant.webp",
+        "srcset": "images/chantiers/couverture/avant-800.webp 800w, images/chantiers/couverture/avant.webp 1599w",
+        "width": 1599,
+        "height": 899,
+        "alt": "Toiture avant traitement : tuiles assombries. Chantier CTH."
       },
       "pendant": {
-        "src": "images/chantiers/toiture/pendant-1600.webp",
-        "srcset": "images/chantiers/toiture/pendant-800.webp 800w, images/chantiers/toiture/pendant-1600.webp 1600w",
-        "width": 1598,
-        "height": 898,
-        "alt": "Traitement de toiture — pendant, chantier CTH"
+        "src": "images/chantiers/couverture/pendant.webp",
+        "srcset": "images/chantiers/couverture/pendant-800.webp 800w, images/chantiers/couverture/pendant.webp 1599w",
+        "width": 1599,
+        "height": 899,
+        "alt": "Traitement de la toiture en cours. Chantier CTH."
       },
       "apres": {
-        "src": "images/chantiers/toiture/apres-1600.webp",
-        "srcset": "images/chantiers/toiture/apres-800.webp 800w, images/chantiers/toiture/apres-1600.webp 1600w",
+        "src": "images/chantiers/couverture/apres.webp",
+        "srcset": "images/chantiers/couverture/apres-800.webp 800w, images/chantiers/couverture/apres.webp 1600w",
         "width": 1600,
         "height": 720,
-        "alt": "Traitement de toiture — après, chantier CTH"
+        "alt": "Toiture traitée, vue d'ensemble de la maison. Chantier CTH."
       },
       "extra": [
         {
@@ -137,208 +143,216 @@
         }
       ]
     },
-    "facade": {
-      "real": true,
-      "legend": "Façade — habillage d'étage, avant / après, chantier CTH",
-      "aspect": "4 / 3",
-      "avant": {
-        "src": "images/chantiers/facade/avant-1600.webp",
-        "srcset": "images/chantiers/facade/avant-800.webp 800w, images/chantiers/facade/avant-1600.webp 1600w",
-        "width": 1600,
-        "height": 1200,
-        "alt": "Façade — habillage d'étage, avant, chantier CTH"
-      },
-      "apres": {
-        "src": "images/chantiers/facade/apres-1600.webp",
-        "srcset": "images/chantiers/facade/apres-800.webp 800w, images/chantiers/facade/apres-1600.webp 1600w",
-        "width": 1600,
-        "height": 1200,
-        "alt": "Façade — habillage d'étage, après, chantier CTH"
-      }
-    },
     "ravalement": {
       "real": true,
+      "chantier": "CH-33",
       "legend": "Ravalement de façade — avant / après, chantier CTH",
+      "phases": [
+        "avant",
+        "pendant",
+        "apres"
+      ],
       "aspect": "3 / 4",
       "avant": {
-        "src": "images/chantiers/ravalement/avant-1600.webp",
-        "srcset": "images/chantiers/ravalement/avant-800.webp 800w, images/chantiers/ravalement/avant-1600.webp 1600w",
+        "src": "images/chantiers/ravalement/avant.webp",
+        "srcset": "images/chantiers/ravalement/avant-800.webp 800w, images/chantiers/ravalement/avant.webp 1600w",
         "width": 1600,
         "height": 900,
-        "alt": "Ravalement de façade — avant, chantier CTH"
+        "alt": "Façade grise avant ravalement, échafaudage posé. Chantier CTH."
       },
       "pendant": {
-        "src": "images/chantiers/ravalement/pendant-1600.webp",
-        "srcset": "images/chantiers/ravalement/pendant-800.webp 800w, images/chantiers/ravalement/pendant-1600.webp 1600w",
+        "src": "images/chantiers/ravalement/pendant.webp",
+        "srcset": "images/chantiers/ravalement/pendant-800.webp 800w, images/chantiers/ravalement/pendant.webp 1600w",
         "width": 1600,
         "height": 1200,
-        "alt": "Ravalement de façade — pendant, chantier CTH"
+        "alt": "Ravalement en cours sous échafaudage. Chantier CTH."
       },
       "apres": {
-        "src": "images/chantiers/ravalement/apres-1600.webp",
-        "srcset": "images/chantiers/ravalement/apres-800.webp 800w, images/chantiers/ravalement/apres-1600.webp 1600w",
+        "src": "images/chantiers/ravalement/apres.webp",
+        "srcset": "images/chantiers/ravalement/apres-800.webp 800w, images/chantiers/ravalement/apres.webp 1200w",
         "width": 1200,
         "height": 1600,
-        "alt": "Ravalement de façade — après, chantier CTH"
+        "alt": "Façade ravalée, teinte claire. Chantier CTH."
       }
     },
-    "isolation": {
+    "facade": {
       "real": true,
+      "chantier": "CH-90",
+      "legend": "Façade — habillage d'étage, avant / après, chantier CTH",
+      "phases": [
+        "avant",
+        "apres"
+      ],
+      "aspect": "4 / 3",
+      "avant": {
+        "src": "images/chantiers/facade/avant.webp",
+        "srcset": "images/chantiers/facade/avant-800.webp 800w, images/chantiers/facade/avant.webp 1600w",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Étage avant travaux : habillages disparates. Chantier CTH."
+      },
+      "apres": {
+        "src": "images/chantiers/facade/apres.webp",
+        "srcset": "images/chantiers/facade/apres-800.webp 800w, images/chantiers/facade/apres.webp 1600w",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Étage habillé d'un parement clair uniforme. Chantier CTH."
+      }
+    },
+    "isolation-combles": {
+      "real": true,
+      "chantier": "CH-47",
       "legend": "Isolation des combles — avant / après, chantier CTH",
+      "phases": [
+        "avant",
+        "apres"
+      ],
       "aspect": "3 / 4",
       "avant": {
-        "src": "images/chantiers/isolation/avant-1600.webp",
-        "srcset": "images/chantiers/isolation/avant-800.webp 800w, images/chantiers/isolation/avant-1600.webp 1600w",
+        "src": "images/chantiers/isolation-combles/avant.webp",
+        "srcset": "images/chantiers/isolation-combles/avant-800.webp 800w, images/chantiers/isolation-combles/avant.webp 1600w",
         "width": 1600,
-        "height": 2132,
-        "alt": "Isolation des combles — avant, chantier CTH"
+        "height": 2133,
+        "alt": "Combles avant travaux : ancienne isolation tassée. Chantier CTH."
       },
       "apres": {
-        "src": "images/chantiers/isolation/apres-1600.webp",
-        "srcset": "images/chantiers/isolation/apres-800.webp 800w, images/chantiers/isolation/apres-1600.webp 1600w",
+        "src": "images/chantiers/isolation-combles/apres.webp",
+        "srcset": "images/chantiers/isolation-combles/apres-800.webp 800w, images/chantiers/isolation-combles/apres.webp 1600w",
         "width": 1600,
-        "height": 2132,
-        "alt": "Isolation des combles — après, chantier CTH"
+        "height": 2133,
+        "alt": "Combles isolés par soufflage, épaisseur repérée par réglette. Chantier CTH."
       }
     },
-    "menuiserie": {
-      "avant": {
-        "src": "images/chantiers/menuiserie/avant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier menuiserie, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/menuiserie/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier menuiserie, photo à venir."
-      },
-      "apres": {
-        "src": "images/chantiers/menuiserie/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier menuiserie, photo à venir."
-      }
-    },
-    "portail": {
-      "avant": {
-        "src": "images/chantiers/portail/avant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier portail, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/portail/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier portail, photo à venir."
-      },
-      "apres": {
-        "src": "images/chantiers/portail/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier portail, photo à venir."
-      }
-    },
-    "fenetres": {
-      "avant": {
-        "src": "images/chantiers/fenetres/avant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier fenetres, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/fenetres/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier fenetres, photo à venir."
-      },
-      "apres": {
-        "src": "images/chantiers/fenetres/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier fenetres, photo à venir."
-      }
-    },
-    "volets": {
+    "menuiserie-volets-roulants": {
       "real": true,
+      "chantier": "CH-39",
       "legend": "Volets roulants — avant / après, chantier CTH",
+      "phases": [
+        "avant",
+        "apres"
+      ],
       "aspect": "4 / 5",
       "avant": {
-        "src": "images/chantiers/volets/avant-1600.webp",
-        "srcset": "images/chantiers/volets/avant-800.webp 800w, images/chantiers/volets/avant-1600.webp 1600w",
+        "src": "images/chantiers/menuiserie-volets-roulants/avant.webp",
+        "srcset": "images/chantiers/menuiserie-volets-roulants/avant-800.webp 800w, images/chantiers/menuiserie-volets-roulants/avant.webp 1600w",
         "width": 1600,
         "height": 1200,
-        "alt": "Volets roulants — avant, chantier CTH"
+        "alt": "Façade arrière avec anciens volets battants en bois. Chantier CTH."
       },
       "apres": {
-        "src": "images/chantiers/volets/apres-1600.webp",
-        "srcset": "images/chantiers/volets/apres-800.webp 800w, images/chantiers/volets/apres-1600.webp 1600w",
+        "src": "images/chantiers/menuiserie-volets-roulants/apres.webp",
+        "srcset": "images/chantiers/menuiserie-volets-roulants/apres-800.webp 800w, images/chantiers/menuiserie-volets-roulants/apres.webp 1200w",
         "width": 1200,
         "height": 1600,
-        "alt": "Volets roulants — après, chantier CTH"
+        "alt": "Même façade équipée de volets roulants et de nouvelles fenêtres. Chantier CTH."
+      }
+    },
+    "menuiserie-portail": {
+      "real": true,
+      "chantier": "CH-18",
+      "legend": "Portail — chantier CTH",
+      "phases": [
+        "apres"
+      ],
+      "apres": {
+        "src": "images/chantiers/menuiserie-portail/apres.webp",
+        "srcset": "images/chantiers/menuiserie-portail/apres-800.webp 800w, images/chantiers/menuiserie-portail/apres.webp 1600w",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Portail coulissant et clôture aluminium posés. Chantier CTH."
+      }
+    },
+    "menuiserie-fenetres": {
+      "real": true,
+      "chantier": "CH-66",
+      "legend": "Fenêtres — chantier CTH",
+      "phases": [
+        "apres"
+      ],
+      "apres": {
+        "src": "images/chantiers/menuiserie-fenetres/apres.webp",
+        "srcset": "images/chantiers/menuiserie-fenetres/apres-800.webp 800w, images/chantiers/menuiserie-fenetres/apres.webp 1600w",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Fenêtre neuve posée, vue intérieure. Chantier CTH."
       }
     },
     "allees": {
-      "avant": {
-        "src": "images/chantiers/allees/avant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier allees, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/allees/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier allees, photo à venir."
-      },
+      "real": true,
+      "chantier": "CH-30",
+      "legend": "Allée — chantier CTH",
+      "phases": [
+        "apres"
+      ],
       "apres": {
         "src": "images/chantiers/allees/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier allees, photo à venir."
+        "srcset": "images/chantiers/allees/apres-800.webp 800w, images/chantiers/allees/apres.webp 1052w",
+        "width": 1052,
+        "height": 1200,
+        "alt": "Allée gravillonnée réalisée avec bordures et caniveau, devant portail. Chantier CTH."
       }
     },
     "interieurs": {
-      "avant": {
-        "src": "images/chantiers/interieurs/avant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier interieurs, photo à venir."
-      },
-      "pendant": {
-        "src": "images/chantiers/interieurs/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier interieurs, photo à venir."
-      },
+      "real": true,
+      "chantier": "CH-53",
+      "legend": "Intérieurs — chantier CTH",
+      "phases": [
+        "apres"
+      ],
       "apres": {
         "src": "images/chantiers/interieurs/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier interieurs, photo à venir."
+        "srcset": "images/chantiers/interieurs/apres-800.webp 800w, images/chantiers/interieurs/apres.webp 1200w",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Cage d'escalier rénovée, murs et portes repeints en blanc. Chantier CTH."
       }
     },
-    "ventilation": {
-      "avant": {
-        "src": "images/chantiers/ventilation/avant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement avant du chantier ventilation, photo à venir."
-      },
+    "ventilations": {
+      "real": true,
+      "chantier": "CH-41",
+      "legend": "Ventilation — pendant / après, chantier CTH",
+      "phases": [
+        "pendant",
+        "apres"
+      ],
       "pendant": {
-        "src": "images/chantiers/ventilation/pendant.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement pendant du chantier ventilation, photo à venir."
+        "src": "images/chantiers/ventilations/pendant.webp",
+        "srcset": "images/chantiers/ventilations/pendant-800.webp 800w, images/chantiers/ventilations/pendant.webp 1200w",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Raccordement des gaines de VMC. Chantier CTH."
       },
       "apres": {
-        "src": "images/chantiers/ventilation/apres.webp",
-        "width": 1600,
-        "height": 1000,
-        "alt": "Emplacement après du chantier ventilation, photo à venir."
+        "src": "images/chantiers/ventilations/apres.webp",
+        "srcset": "images/chantiers/ventilations/apres-800.webp 800w, images/chantiers/ventilations/apres.webp 1200w",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Bouche d'extraction posée au plafond. Chantier CTH."
       }
+    },
+    "menuiserie": {
+      "real": true,
+      "legend": "Portail, fenêtres et volets roulants — chantiers CTH",
+      "links": [
+        {
+          "href": "menuiserie-portail.html",
+          "slug": "menuiserie-portail",
+          "stage": "apres",
+          "label": "Portail"
+        },
+        {
+          "href": "menuiserie-fenetres.html",
+          "slug": "menuiserie-fenetres",
+          "stage": "apres",
+          "label": "Fenêtres"
+        },
+        {
+          "href": "menuiserie-volets.html",
+          "slug": "menuiserie-volets-roulants",
+          "stage": "apres",
+          "label": "Volets roulants"
+        }
+      ]
     }
   }
 }

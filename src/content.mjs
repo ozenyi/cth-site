@@ -3,7 +3,7 @@
 export const services = [
   {
     file: "traitement-toiture.html",
-    chantier: "toiture",
+    chantier: "couverture",
     illustration: "toiture",
     projet: "toiture",
     kicker: "Toiture",
@@ -117,7 +117,7 @@ export const services = [
   },
   {
     file: "isolation-combles.html",
-    chantier: "isolation",
+    chantier: "isolation-combles",
     illustration: "isolation",
     projet: "isolation",
     kicker: "Isolation",
@@ -188,7 +188,7 @@ export const services = [
   },
   {
     file: "menuiserie-portail.html",
-    chantier: "portail",
+    chantier: "menuiserie-portail",
     illustration: "portail",
     projet: "portail",
     kicker: "Menuiserie · Portail",
@@ -222,7 +222,7 @@ export const services = [
   },
   {
     file: "menuiserie-fenetres.html",
-    chantier: "fenetres",
+    chantier: "menuiserie-fenetres",
     illustration: "fenetres",
     projet: "fenetres",
     kicker: "Menuiserie · Fenêtres",
@@ -257,7 +257,7 @@ export const services = [
   },
   {
     file: "menuiserie-volets.html",
-    chantier: "volets",
+    chantier: "menuiserie-volets-roulants",
     illustration: "volets",
     projet: "volets",
     kicker: "Menuiserie · Volets",
@@ -360,7 +360,7 @@ export const services = [
   },
   {
     file: "ventilation.html",
-    chantier: "ventilation",
+    chantier: "ventilations",
     illustration: "ventilation",
     projet: "ventilation",
     kicker: "Ventilation",

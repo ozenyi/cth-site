@@ -29,10 +29,12 @@ function contrast(hexA, hexB) {
 
 if (!isRgeValid("2026-12-12", "2026-12-12")) fail("le 12/12/2026 doit encore afficher le RGE");
 if (isRgeValid("2026-12-13", "2026-12-12")) fail("le 13/12/2026 ne doit plus afficher le RGE");
-if (contrast("#ffffff", "#3f7a22") < 4.5) fail(`contraste bouton ${contrast("#ffffff", "#3f7a22").toFixed(2)}`);
-if (contrast("#2f6218", "#f3f1eb") < 4.5) fail(`contraste kicker ${contrast("#2f6218", "#f3f1eb").toFixed(2)}`);
-if (contrast("#161616", "#f7f6f2") < 4.5) fail("contraste texte");
-if (contrast("#5c5c5c", "#f7f6f2") < 4.5) fail(`contraste texte secondaire ${contrast("#5c5c5c", "#f7f6f2").toFixed(2)}`);
+if (contrast("#ffffff", "#b5532f") < 4.5) fail(`contraste bouton ${contrast("#ffffff", "#b5532f").toFixed(2)}`);
+if (contrast("#8e3f24", "#f3eadf") < 4.5) fail(`contraste accent ${contrast("#8e3f24", "#f3eadf").toFixed(2)}`);
+if (contrast("#2b2b2b", "#f3eadf") < 4.5) fail("contraste texte");
+if (contrast("#5c534c", "#f3eadf") < 4.5) fail(`contraste texte secondaire ${contrast("#5c534c", "#f3eadf").toFixed(2)}`);
+if (contrast("#f3eadf", "#2b2b2b") < 4.5) fail("contraste pied de page");
+if (contrast("#e7c2b4", "#2b2b2b") < 4.5) fail("contraste titre de pied de page");
 
 const htmlFiles = readdirSync(dist).filter((file) => file.endsWith(".html"));
 const required = [
@@ -106,13 +108,28 @@ function checkUrl(file, url) {
 
 const home = read("index.html");
 if (!home.includes(site.slogan)) fail("slogan absent de l'accueil");
+if (!home.includes("Centre Technique de l'Habitat (CTH)")) fail("titre CTH absent de l'accueil");
+if (!home.includes("Demander un devis gratuit")) fail("appel devis absent de l'accueil");
+if (!home.includes('role="tablist"')) fail("accueil sans onglets de chantiers");
 if (!home.includes('data-ba')) fail("accueil sans comparateur");
 if (!home.includes(site.insuranceLabel)) fail("assurance absente");
 if (!home.includes("valable jusqu'au 12/12/2026")) fail("mention de validité RGE absente");
 if (!home.includes(site.rge.validUntil)) fail("date RGE absente du script");
 if (!home.includes(site.hours.label)) fail("horaires absents");
-for (const file of servicePages) {
+if (!home.includes("sitemap.xml")) fail("plan du site absent du pied de page");
+if (!home.includes("Zone d'intervention")) fail("zone d'intervention absente");
+const comparators = [
+  "traitement-toiture.html",
+  "facade.html",
+  "ravalement.html",
+  "isolation-combles.html",
+  "menuiserie-volets.html",
+];
+for (const file of comparators) {
   if (!read(file).includes('data-ba')) fail(`${file} sans comparateur`);
+}
+for (const file of ["allees.html", "interieurs.html", "ventilation.html", "menuiserie-portail.html", "menuiserie-fenetres.html", "menuiserie.html"]) {
+  if (read(file).includes('data-ba')) fail(`${file} ne doit pas simuler un avant / après`);
 }
 
 const contact = read("contact.html");
@@ -174,20 +191,26 @@ for (const [file, legend] of Object.entries(realLegends)) {
   if (html.includes("photo à venir")) fail(`${file} encore en emplacement vide`);
   if (html.includes("chantiers/accueil/")) fail(`${file} pointe encore vers les cadres d'accueil`);
 }
-if (!read("index.html").includes("images/chantiers/ravalement/apres-1600.webp")) fail("accueil sans la photo de ravalement");
+if (!read("index.html").includes("images/chantiers/ravalement/apres.webp")) fail("accueil sans la photo de ravalement");
+if (!read("index.html").includes("images/chantiers/couverture/apres.webp")) fail("accueil sans la photo de toiture");
 if (!read("traitement-toiture.html").includes("images/chantiers/toiture/realisation-facade-1600.webp")) {
   fail("toiture sans la réalisation façade");
 }
 if (!read("traitement-toiture.html").includes("Même maison, deux prestations.")) fail("toiture sans la réalisation commune");
-for (const file of [
-  "allees.html",
-  "interieurs.html",
-  "ventilation.html",
-  "menuiserie.html",
-  "menuiserie-portail.html",
-  "menuiserie-fenetres.html",
+for (const [file, needle] of [
+  ["allees.html", "images/chantiers/allees/apres.webp"],
+  ["interieurs.html", "images/chantiers/interieurs/apres.webp"],
+  ["ventilation.html", "images/chantiers/ventilations/apres.webp"],
+  ["menuiserie-portail.html", "images/chantiers/menuiserie-portail/apres.webp"],
+  ["menuiserie-fenetres.html", "images/chantiers/menuiserie-fenetres/apres.webp"],
+  ["menuiserie.html", "images/chantiers/menuiserie-volets-roulants/apres.webp"],
 ]) {
-  if (!read(file).includes("photo à venir")) fail(`${file} devrait garder les cadres d'attente`);
+  const html = read(file);
+  if (!html.includes(needle)) fail(`${file} sans sa photo de chantier`);
+  if (html.includes("photo à venir")) fail(`${file} encore en emplacement vide`);
+}
+if (!read("ventilation.html").includes("images/chantiers/ventilations/pendant.webp")) {
+  fail("ventilation sans la photo pendant");
 }
 if (read("facade.html").includes("chantiers/facade/pendant")) fail("façade avec une étape pendant inventée");
 if (read("isolation-combles.html").includes("chantiers/isolation/pendant")) fail("combles avec une étape pendant inventée");
