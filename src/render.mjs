@@ -149,7 +149,7 @@ function footer() {
     </div>
     <div class="wrap fine">
       <p>${esc(site.legalName)}, ${esc(site.forme)} au capital de ${esc(site.capital)} · SIRET ${esc(site.siret)} · ${esc(site.rcs)}</p>
-      <p>Siège à ${esc(site.address.city)}, Loiret, depuis ${esc(site.since)}. Photos d'illustration sous licence Pexels : <a href="images/LICENSES.txt">crédits</a>. Les cadres de chantiers ne sont pas encore des réalisations.</p>
+      <p>Siège à ${esc(site.address.city)}, Loiret, depuis ${esc(site.since)}. Photos d'illustration sous licence Pexels : <a href="images/LICENSES.txt">crédits</a>. Les comparateurs de toiture, façade, ravalement, combles et volets roulants montrent des chantiers CTH.</p>
     </div>
   </footer>
   <div class="callbar">
@@ -166,24 +166,49 @@ function illu(manifest, name, eager = false) {
 
 function shot(manifest, slug, stage) {
   const img = manifest.chantiers[slug][stage];
-  return `<img src="${img.src}" width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" loading="lazy" decoding="async">`;
+  const srcset = img.srcset
+    ? ` srcset="${img.srcset}" sizes="(min-width: 1200px) 1152px, 100vw"`
+    : "";
+  const focus = img.focus ? ` style="object-position: ${esc(img.focus)}"` : "";
+  return `<img src="${img.src}"${srcset} width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" loading="lazy" decoding="async"${focus}>`;
 }
 
 export function comparaison(manifest, slug) {
+  const pack = manifest.chantiers[slug];
   const labels = [
     ["avant", "Avant"],
     ["pendant", "Pendant"],
     ["apres", "Après"],
   ];
   const stages = labels
-    .map(
-      ([key, label]) => `<li><figure>
+    .filter(([key]) => pack[key])
+    .map(([key, label]) => {
+      const file = pack.real ? "" : `<small>chantiers/${esc(slug)}/${key}.webp</small>`;
+      return `<li><figure>
         ${shot(manifest, slug, key)}
-        <figcaption><strong>${label}</strong><small>chantiers/${esc(slug)}/${key}.webp</small></figcaption>
-      </figure></li>`
+        <figcaption><strong>${label}</strong>${file}</figcaption>
+      </figure></li>`;
+    })
+    .join("");
+  const aspect = pack.aspect ? ` style="--ba: ${pack.aspect}"` : "";
+  const note = pack.real
+    ? ""
+    : `<p class="form-note">Photos classées par chantier et par étape. Remplacez les fichiers en gardant le même nom : avant, pendant, après.</p>`;
+  const extras = (pack.extra || [])
+    .map(
+      (img) => `<figure>
+        <img src="${img.src}" srcset="${img.srcset}" sizes="(min-width: 800px) 36rem, 100vw" width="${img.width}" height="${img.height}" alt="${esc(img.alt)}" loading="lazy" decoding="async">
+        <figcaption>${esc(img.caption)}</figcaption>
+      </figure>`
     )
     .join("");
-  return `<div class="ba" data-ba>
+  const extraBlock = extras
+    ? `<h3 class="realisations-title">Même maison, deux prestations.</h3>
+    <div class="realisations">${extras}</div>
+    <p class="form-note">Toiture refaite, puis façade terminée. Chantier CTH.</p>`
+    : "";
+  return `<div class="chantier"${aspect}>
+    <div class="ba" data-ba>
       ${shot(manifest, slug, "apres")}
       <div class="ba-clip">${shot(manifest, slug, "avant")}</div>
       <span class="ba-handle" aria-hidden="true"></span>
@@ -192,7 +217,9 @@ export function comparaison(manifest, slug) {
       <input type="range" min="0" max="100" value="56" aria-label="Comparer l'avant et l'après du chantier">
     </div>
     <ul class="stages">${stages}</ul>
-    <p class="form-note">Photos classées par chantier et par étape. Remplacez les fichiers en gardant le même nom : avant, pendant, après.</p>`;
+    ${note}
+    ${extraBlock}
+  </div>`;
 }
 
 function businessNode() {
@@ -388,9 +415,9 @@ export function renderHome(manifest) {
         <div class="section-head reveal">
           <p class="kicker">Chantiers</p>
           <h2>Avant, pendant, après.</h2>
-          <p>Les photographies de nos maisons arriveront ici, classées par chantier et par étape. En attendant, le comparateur est prêt. Ce ne sont pas des réalisations CTH.</p>
+          <p>Ravalement de façade — avant / après, chantier CTH.</p>
         </div>
-        <div class="reveal">${comparaison(manifest, "accueil")}</div>
+        <div class="reveal">${comparaison(manifest, "ravalement")}</div>
       </div>
     </section>
     <section class="section">
@@ -509,8 +536,12 @@ export function renderService(service, manifest) {
       <div class="wrap">
         <div class="section-head">
           <p class="kicker">Chantier</p>
-          <h2>Avant, pendant, après.</h2>
-          <p>Le comparateur attend les photos de ce type d'ouvrage. Illustration et cadres ne sont pas des chantiers CTH.</p>
+          <h2>${manifest.chantiers[service.chantier].pendant ? "Avant, pendant, après." : "Avant, après."}</h2>
+          <p>${
+            manifest.chantiers[service.chantier].real
+              ? esc(manifest.chantiers[service.chantier].legend) + "."
+              : "Le comparateur attend les photos de ce type d'ouvrage. Illustration et cadres ne sont pas des chantiers CTH."
+          }</p>
         </div>
         ${comparaison(manifest, service.chantier)}
       </div>
@@ -669,7 +700,7 @@ export function renderMentions() {
       <h2>Médiateur de la consommation</h2>
       <p>[À COMPLÉTER]</p>
       <h2>Propriété intellectuelle</h2>
-      <p>Les textes de ce site sont ceux de ${esc(site.legalName)}. Les photos pleine largeur d'ambiance sont des illustrations libres de droits (licence Pexels) ; les auteurs sont listés dans le fichier <a href="images/LICENSES.txt">images/LICENSES.txt</a>. Ce ne sont pas des chantiers de CTH. Les cadres « avant / pendant / après » sont des emplacements vides, en attendant les photographies de l'entreprise.</p>
+      <p>Les textes de ce site sont ceux de ${esc(site.legalName)}. Les photos pleine largeur d'ambiance sont des illustrations libres de droits (licence Pexels) ; les auteurs sont listés dans le fichier <a href="images/LICENSES.txt">images/LICENSES.txt</a>. Ce ne sont pas des chantiers de CTH. Les comparateurs avant / après des pages toiture, façade, ravalement, isolation des combles et volets roulants sont des chantiers de l'entreprise. Les autres cadres restent des emplacements, en attendant les photographies de ces ouvrages.</p>
       <p>Le logo texte (chevron vert, lettres CTH) est une version provisoire, dans l'esprit du logo existant. Le fichier source du logo suivra.</p>
     </article>`;
   return layout({

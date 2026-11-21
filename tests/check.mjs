@@ -160,6 +160,59 @@ if (sitemap.includes("merci.html")) fail("merci dans le sitemap");
 const robots = read("robots.txt");
 if (!robots.includes(`${site.siteUrl}/sitemap.xml`)) fail("robots sans sitemap");
 
+const realLegends = {
+  "index.html": "Ravalement de façade — avant / après, chantier CTH",
+  "ravalement.html": "Ravalement de façade — avant / après, chantier CTH",
+  "traitement-toiture.html": "Traitement de toiture — avant / après, chantier CTH",
+  "facade.html": "Façade — habillage d'étage, avant / après, chantier CTH",
+  "isolation-combles.html": "Isolation des combles — avant / après, chantier CTH",
+  "menuiserie-volets.html": "Volets roulants — avant / après, chantier CTH",
+};
+for (const [file, legend] of Object.entries(realLegends)) {
+  const html = read(file);
+  if (!html.includes(legend)) fail(`${file} sans la légende réelle`);
+  if (html.includes("photo à venir")) fail(`${file} encore en emplacement vide`);
+  if (html.includes("chantiers/accueil/")) fail(`${file} pointe encore vers les cadres d'accueil`);
+}
+if (!read("index.html").includes("images/chantiers/ravalement/apres-1600.webp")) fail("accueil sans la photo de ravalement");
+if (!read("traitement-toiture.html").includes("images/chantiers/toiture/realisation-facade-1600.webp")) {
+  fail("toiture sans la réalisation façade");
+}
+if (!read("traitement-toiture.html").includes("Même maison, deux prestations.")) fail("toiture sans la réalisation commune");
+for (const file of [
+  "allees.html",
+  "interieurs.html",
+  "ventilation.html",
+  "menuiserie.html",
+  "menuiserie-portail.html",
+  "menuiserie-fenetres.html",
+]) {
+  if (!read(file).includes("photo à venir")) fail(`${file} devrait garder les cadres d'attente`);
+}
+if (read("facade.html").includes("chantiers/facade/pendant")) fail("façade avec une étape pendant inventée");
+if (read("isolation-combles.html").includes("chantiers/isolation/pendant")) fail("combles avec une étape pendant inventée");
+if (read("menuiserie-volets.html").includes("chantiers/volets/pendant")) fail("volets avec une étape pendant inventée");
+
+function webpMeta(file) {
+  const buf = readFileSync(file);
+  if (buf.toString("ascii", 0, 4) !== "RIFF" || buf.toString("ascii", 8, 12) !== "WEBP") return "pas un webp";
+  let offset = 12;
+  while (offset + 8 <= buf.length) {
+    const tag = buf.toString("ascii", offset, offset + 4);
+    const size = buf.readUInt32LE(offset + 4);
+    if (tag === "EXIF" || tag === "XMP ") return tag;
+    offset += 8 + size + (size % 2);
+  }
+  return null;
+}
+for (const file of readdirSync(path.join(dist, "images/chantiers"), { recursive: true })) {
+  if (!String(file).endsWith(".webp")) continue;
+  const full = path.join(dist, "images/chantiers", file);
+  const meta = webpMeta(full);
+  if (meta) fail(`${file} contient ${meta}`);
+  if (String(file).includes("1600") && readFileSync(full).length > 400_000) fail(`${file} trop lourd`);
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
