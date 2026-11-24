@@ -147,27 +147,14 @@ p { margin: 0 0 1rem; }
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
   text-decoration: none;
   margin-right: auto;
+  min-width: 0;
 }
-.logo-mark { width: 1.7rem; height: 1.7rem; flex: none; }
-.logo-cth {
-  display: block;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 1.25rem;
-  line-height: 1;
-}
-.logo-sub {
-  display: block;
-  margin-top: 0.2rem;
-  color: var(--green-deep);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  line-height: 1.2;
-  max-width: 11rem;
+.logo img {
+  width: 9.5rem;
+  height: auto;
+  aspect-ratio: 600 / 168;
 }
 
 .header-phone {
@@ -765,7 +752,34 @@ html[data-rge="expired"] [data-rge-expired] { display: block; }
 .site-footer a { color: #f3eadf; text-decoration: underline; text-underline-offset: 0.18em; }
 .site-footer .logo { text-decoration: none; }
 .site-footer a:hover { color: #fff; }
-.site-footer .logo-sub { color: #e7c2b4; }
+.site-footer .logo img { width: 12.5rem; }
+.social-row {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.social:hover { background: var(--cream); }
+.site-footer .social {
+  color: #f3eadf;
+  border-color: rgba(243, 234, 223, 0.45);
+  text-decoration: none;
+}
+.site-footer .social:hover {
+  color: #fff;
+  border-color: #fff;
+  background: transparent;
+}
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .site-footer li { margin: 0.3rem 0; }
 .site-footer h2 {
@@ -840,6 +854,7 @@ html[data-rge="expired"] [data-rge-expired] { display: block; }
   .service-grid, .steps, .realisations, .photo-links { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
   .header-phone, .btn-header { display: inline-flex; }
+  .logo img { width: 11rem; }
   .split { grid-template-columns: 1.2fr 0.8fr; align-items: start; }
   .layout.contact-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
   .page-hero { min-height: 34rem; }
@@ -847,6 +862,7 @@ html[data-rge="expired"] [data-rge-expired] { display: block; }
 
 @media (min-width: 1080px) {
   .menu-toggle { display: none; }
+  .logo img { width: 12.75rem; }
   .subnav { display: block; }
   .service-grid { grid-template-columns: 1fr 1fr 1fr; }
   .trust { grid-template-columns: repeat(4, 1fr); }

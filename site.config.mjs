@@ -30,6 +30,9 @@ export const site = {
   phoneDisplay: "02 38 64 60 07",
   phoneTel: "+33238646007",
   email: "cth45000@gmail.com",
+  social: {
+    instagram: "https://www.instagram.com/cth_orleans/",
+  },
   address: {
     line: "7 bis rue Bernard Palissy",
     postalCode: "45800",

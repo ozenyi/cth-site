@@ -62,7 +62,14 @@ Une seule phase s'affiche en photo, pas en comparateur. L'accueil groupe les cin
 
 ## Logo
 
-Le logo du site est un mot-symbole provisoire : chevron terracotta, **CTH** en anthracite, sous-titre terracotta. Quand le fichier source arrive, remplacez le SVG dans `src/render.mjs` (fonction `logo`) et `assets/favicon.svg`.
+Le logo officiel est dans `assets/images/logo/`. Ses couleurs viennent du PDF (vert `#76ac53`, filet `#1d1d1b`, texte noir) : on ne les rapproche pas de la palette terracotta du site.
+
+- `logo-cth-source.pdf` — export Illustrator d'origine.
+- `logo-cth.svg` — tracé recadré sur le dessin, sans fond blanc ni masque.
+- `logo-cth-dark.svg` — même dessin pour les fonds anthracite : le noir passe au blanc, le vert reste.
+- `logo-cth.png` — repli d'environ 600 px, aussi cité dans le JSON-LD.
+
+`assets/favicon.svg` et `assets/apple-touch-icon.png` reprennent la maison seule.
 
 ## Adresse
 
@@ -103,7 +110,6 @@ Sans ce clic, les demandes des visiteurs ne sont pas délivrées. Ensuite, chaqu
 ## Ce qui reste à compléter
 
 - Remplacer les cadres encore vides : allées, intérieurs, ventilation, portail, fenêtres, page Menuiserie.
-- Fournir le fichier source du logo.
 - Activer FormSubmit depuis `cth45000@gmail.com`.
 - Adhérer au CM2C (https://www.cm2c.net/inscription-professionnel.php) : la mention n'est valable qu'une fois la convention signée.
 - Durée précise de conservation des demandes sans suite, et garanties du transfert FormSubmit : `[À COMPLÉTER]` dans la politique de confidentialité.

@@ -25,6 +25,7 @@ await cp(path.join(root, "assets/js"), path.join(dist, "js"), { recursive: true 
 await cp(path.join(root, "assets/fonts"), path.join(dist, "fonts"), { recursive: true });
 await cp(path.join(root, "assets/images"), path.join(dist, "images"), { recursive: true });
 await cp(path.join(root, "assets/favicon.svg"), path.join(dist, "favicon.svg"));
+await cp(path.join(root, "assets/apple-touch-icon.png"), path.join(dist, "apple-touch-icon.png"));
 
 const pages = [
   ["index.html", renderHome(manifest)],

@@ -177,6 +177,42 @@ if (!business) fail("JSON-LD sans HomeAndConstructionBusiness");
 if (business.address.streetAddress !== site.address.line) fail("JSON-LD n'utilise pas l'adresse de config");
 if (business.aggregateRating) fail("note chiffrée dans le JSON-LD");
 if (isRgeValid() && business.hasCredential?.validUntil !== site.rge.validUntil) fail("validUntil RGE absent du JSON-LD");
+if (business.logo !== `${site.siteUrl}/images/logo/logo-cth.png`) fail("JSON-LD logo ne pointe pas vers le PNG");
+if (![].concat(business.sameAs).includes(site.social.instagram)) fail("JSON-LD sameAs sans Instagram");
+
+for (const file of [
+  "images/logo/logo-cth.svg",
+  "images/logo/logo-cth-dark.svg",
+  "images/logo/logo-cth.png",
+  "images/logo/logo-cth-source.pdf",
+  "favicon.svg",
+  "apple-touch-icon.png",
+]) {
+  if (!existsSync(path.join(dist, file))) fail(`manque ${file}`);
+}
+const logoSvg = readFileSync(path.join(dist, "images/logo/logo-cth.svg"), "utf8");
+const logoDark = readFileSync(path.join(dist, "images/logo/logo-cth-dark.svg"), "utf8");
+if (/clipPath|clip-path/i.test(logoSvg) || /clipPath|clip-path/i.test(logoDark)) fail("logo svg avec un clip");
+if (!logoSvg.includes("#76ac53") || !logoDark.includes("#76ac53")) fail("vert du logo absent");
+const darkPaint = logoDark.replace(/<!--[\s\S]*?-->/g, "");
+if (darkPaint.includes("#000000") || darkPaint.includes("#1d1d1b")) fail("variante sombre encore en noir");
+if (!darkPaint.includes("#ffffff")) fail("variante sombre sans blanc");
+const favicon = readFileSync(path.join(dist, "favicon.svg"), "utf8");
+if (favicon.includes("#B5532F") || favicon.includes("#b5532f")) fail("favicon encore provisoire");
+if (!home.includes('srcset="images/logo/logo-cth.svg"')) fail("en-tête sans le logo");
+if (!home.includes('srcset="images/logo/logo-cth-dark.svg"')) fail("pied de page sans le logo sombre");
+if (!home.includes(`alt="${"Centre Technique de l'Habitat (CTH)"}"`)) fail("logo sans libellé");
+if (!home.includes('width="600"') || !home.includes('height="168"')) fail("logo sans width/height");
+if (!home.includes('href="apple-touch-icon.png"')) fail("apple-touch-icon absent");
+if (!home.includes('aria-label="Instagram de CTH (@cth_orleans)"')) fail("icône Instagram sans libellé");
+if (!home.includes('href="https://www.instagram.com/cth_orleans/"')) fail("lien Instagram absent");
+if (!home.includes('target="_blank"') || !home.includes('rel="noopener"')) fail("lien Instagram incomplet");
+if (home.includes("version provisoire") || home.includes("chevron terracotta")) fail("mention de logo provisoire encore là");
+const contactInstagram = (contact.match(/instagram\.com\/cth_orleans/g) || []).length;
+if (contactInstagram < 3) fail("page contact sans Instagram (carte, pied de page, JSON-LD)");
+if (mentions.includes("version provisoire") || mentions.includes("fichier source du logo")) {
+  fail("mentions légales parlent encore d'un logo provisoire");
+}
 
 const sitemap = read("sitemap.xml");
 if (!sitemap.includes(pageUrl("isolation-combles.html"))) fail("sitemap incomplet");
