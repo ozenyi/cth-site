@@ -16,15 +16,27 @@ export function esc(value) {
     .replace(/"/g, "&quot;");
 }
 
-const logoSvg = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
-  <path d="M3 5.5 16 16 3 26.5" fill="none" stroke="#B5532F" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M12 5.5 25 16 12 26.5" fill="none" stroke="#B5532F" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round" opacity="0.55"/>
-</svg>`;
+const LOGO_LABEL = "Centre Technique de l'Habitat (CTH)";
+const LOGO_WIDTH = 600;
+const LOGO_HEIGHT = 168;
 
-function logo() {
+function logo(variant = "light") {
+  const file = variant === "dark" ? "images/logo/logo-cth-dark.svg" : "images/logo/logo-cth.svg";
   return `<a class="logo" href="index.html">
-    ${logoSvg}
-    <span><span class="logo-cth">CTH</span><span class="logo-sub">Centre Technique de l'Habitat</span></span>
+    <picture>
+      <source srcset="${file}" type="image/svg+xml">
+      <img src="images/logo/logo-cth.png" alt="${LOGO_LABEL}" width="${LOGO_WIDTH}" height="${LOGO_HEIGHT}">
+    </picture>
+  </a>`;
+}
+
+function instagramLink() {
+  return `<a class="social" href="${esc(site.social.instagram)}" target="_blank" rel="noopener">
+    <svg role="img" aria-label="Instagram de CTH (@cth_orleans)" width="22" height="22" viewBox="0 0 24 24" focusable="false">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="12" r="4.15" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="17.15" cy="6.85" r="1.15" fill="currentColor"/>
+    </svg>
   </a>`;
 }
 
@@ -102,7 +114,7 @@ function header(file) {
   return `<a class="skip" href="#contenu">Aller au contenu</a>
   <div class="topbar">
     <header class="site-header">
-      ${logo()}
+      ${logo("light")}
       <a class="header-phone" href="tel:${site.phoneTel}">${esc(site.phoneDisplay)}</a>
       <a class="btn btn-primary btn-header" href="contact.html">Devis gratuit</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Menu</button>
@@ -111,7 +123,7 @@ function header(file) {
   </div>
   <div id="nav-panel" class="nav-panel" hidden>
     <div class="nav-panel-top">
-      ${logo()}
+      ${logo("light")}
       <button class="menu-toggle" type="button" data-close-menu>Fermer</button>
     </div>
     <nav aria-label="Menu"><ul>${panelLinks}</ul></nav>
@@ -127,8 +139,9 @@ function footer() {
   return `<footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
-        ${logo()}
+        ${logo("dark")}
         <p>${esc(site.slogan)}</p>
+        <p class="social-row">${instagramLink()}</p>
         <p class="insure">${esc(site.insuranceLabel)}</p>
       </div>
       <div>
@@ -265,6 +278,8 @@ function businessNode() {
     telephone: site.phoneTel,
     email: site.email,
     image: `${site.siteUrl}/images/og.jpg`,
+    logo: `${site.siteUrl}/images/logo/logo-cth.png`,
+    sameAs: [site.social.instagram],
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.line,
@@ -354,6 +369,7 @@ export function layout({
   <meta property="og:image" content="${site.siteUrl}/images/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/noto-serif-700.woff2" as="font" type="font/woff2" crossorigin>
   ${preload}
@@ -705,6 +721,7 @@ export function renderContact(manifest) {
           <h2>CTH</h2>
           <p>${esc(site.legalName)}<br>${esc(fullAddress())}</p>
           <p><a href="tel:${site.phoneTel}">${esc(site.phoneDisplay)}</a><br><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
+          <p class="social-row">${instagramLink()}</p>
           <p>${esc(site.hours.label)}<br>${esc(site.hours.closed)}</p>
           <p><a href="${map}" rel="noopener noreferrer">Voir le plan</a></p>
           <p class="form-note">${esc(site.insuranceLabel)}</p>
@@ -754,7 +771,6 @@ export function renderMentions() {
       <p>Conformément à l'article L. 612-1 du Code de la consommation, tout consommateur a le droit de recourir gratuitement à un médiateur de la consommation en vue de la résolution amiable du litige qui l'oppose à un professionnel. Le médiateur de la consommation désigné par ${esc(site.legalName)} est le ${esc(site.mediator.name)}, ${esc(site.mediator.address)}, <a href="${esc(site.mediator.url)}" rel="noopener noreferrer">${esc(site.mediator.url)}</a>. Le consommateur peut le saisir en ligne sur <a href="${esc(site.mediator.claimUrl)}" rel="noopener noreferrer">${esc(site.mediator.claimUrl)}</a>, après une réclamation écrite préalable auprès du professionnel, et dans un délai d'un an à compter de cette réclamation.</p>
       <h2>Propriété intellectuelle</h2>
       <p>Les textes de ce site sont ceux de ${esc(site.legalName)}. Les photos pleine largeur d'ambiance des pages de savoir-faire sont des illustrations libres de droits (licence Pexels) ; les auteurs sont listés dans le fichier <a href="images/LICENSES.txt">images/LICENSES.txt</a>. Ce ne sont pas des chantiers de CTH. Les comparateurs avant / après des pages toiture, façade, ravalement, isolation des combles et volets roulants, ainsi que les photos de portail, de fenêtres, d'allées, d'intérieurs et de ventilation, sont des chantiers de l'entreprise.</p>
-      <p>Le logo texte (chevron terracotta, lettres CTH) est une version provisoire, dans l'esprit du logo existant. Le fichier source du logo suivra.</p>
     </article>`;
   return layout({
     file: "mentions-legales.html",
